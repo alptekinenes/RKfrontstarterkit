@@ -1,0 +1,27 @@
+doctype html
+html(lang='tr-TR')
+  head
+    //if lt IE 9
+      script(src='assets/js/html5shiv.min.js')
+      script(src='assets/js/respond.min.js')
+    link(rel='shortcut icon', href='assets/img/core/favicon.ico')
+    meta(charset='UTF-8')
+    title rkFrontStarterKit
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='HandheldFriendly', content='true')
+    meta(name='keywords', content='')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    meta(property='og:title', content='')
+    meta(property='og:url', content='')
+    meta(property='og:image', content='')
+  body
+    // header
+    include header.pug
+    .jumbotron.text-center.margin-no
+      h1 rkFrontStarterKit
+    // footer
+    include footer.pug
+    // Import - Assets
+    include assets-importer.pug

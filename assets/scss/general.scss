@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+
+
+
+/*
+
+
+Front - Developer
+
+--------
+
+Developer : Selim Doyranlı
+
+Developer Website : selimdoyranli.com
+
+Github : @selimdoyranli
+
+Twitter : @selimdoyranli
+
+___________
+
+
+TEAM : RadKod ✪
+
+TEAM WEBSITE : www.RadKod.com
+
+*/
+
+::-moz-selection {
+    background: #444;
+    color: #fff;
+}
+
+::selection {
+    background: #444;
+    color: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a:visited {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+input,
+button,
+input:focus,
+button:focus,
+input:active,
+button:active {
+    outline: none !important;
+}
+
+[disabled] {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

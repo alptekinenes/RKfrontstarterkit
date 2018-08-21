@@ -1,0 +1,20 @@
+// iconic fonts
+@import url("ionicons/css/ionicons.min.css");
+@import url("material-design-iconic-font/css/material-design-iconic-font.min.css");
+@import url("font_awesome/css/font-awesome.min.css");
+
+
+//test-font
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin-ext');
+
+@mixin roboto-regular {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+
+@mixin roboto-bold {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+}
+
+// ..

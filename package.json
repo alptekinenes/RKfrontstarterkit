@@ -1,0 +1,38 @@
+{
+	"name": "rkFrontStarterKit",
+	"version": "1.0.0",
+	"description": "A starter project for Front End Development | rkFrontStarterKit",
+	"main": "gulpfile.js",
+	"scripts": {
+		"start": "gulp"
+	},
+	"devDependencies": {
+		"browser-sync": "^2.16.0",
+		"gulp": "^3.9.1",
+		"gulp-autoprefixer": "^3.1.1",
+		"gulp-plumber": "*",
+		"gulp-pug": "^3.0.4",
+		"gulp-rename": "^1.2.2",
+		"gulp-sass": "^2.3.2"
+	},
+	"engines": {
+		"node": "4.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RadKod/rkFrontStarterKit.git"
+	},
+	"keywords": [
+		"gulp",
+		"sass",
+		"pug",
+		"browsersync"
+	],
+	"author": "Selim Doyranlı",
+	"contributors": [
+		"Selim Doyranlı <selim@radkod.com> (https://selimdoyranli.com)"
+	],
+	"bugs": "selim@radkod.com",
+	"homepage": "https://www.radkod.com",
+	"license": "MIT"
+}
