@@ -20,6 +20,7 @@
   * ##### Wow.js animated elements
   * ##### Swiper
   * ##### Trunk8 (cut text)
+  * ##### Fastclick
   * ##### Material Icons
   * ##### Font Awesome
   * ##### Ion Icons
