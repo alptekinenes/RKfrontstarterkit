@@ -14,7 +14,7 @@
     * ###### Extra Class Management
     * ###### Browser Hack
   * ##### Browser-sync (Live Reload)
-  * ##### Bootstrap
+  * ##### Bootstrap 4
   * ##### Animate.css
   * ##### Lazy Load Image
   * ##### Wow.js animated elements
