@@ -1,3 +1,4 @@
+
 #  rkFrontStarterKit
 
 &nbsp;
@@ -6,9 +7,23 @@
 
 #### Best starter kit for front end development.
 
-  - ##### Pug
-  - ##### Sass (.scss)
-  - ##### Browser-sync (Live Reload)
+  * ##### Pug
+
+  * ##### Sass (.scss)
+    * ###### General Class Management
+    * ###### Extra Class Management
+    * ###### Browser Hack
+  * ##### Browser-sync (Live Reload)
+  * ##### Bootstrap
+  * ##### Animate.css
+  * ##### Lazy Load Image
+  * ##### Wow.js animated elements
+  * ##### Swiper
+  * ##### Trunk8 (cut text)
+  * ##### Material Icons
+  * ##### Font Awesome
+  * ##### Ion Icons
+  * ######  demo image assets
     &nbsp;
 _________________________________________ 
 
@@ -40,3 +55,4 @@ or
 localhost:3000
 ```
 ###### LICENSE : MIT
+
