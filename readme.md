@@ -20,7 +20,7 @@ Git clone.
 $ git clone https://github.com/RadKod/rkFrontStarterKit.git
 ```
 &nbsp;
-> rkFrontStarterKit requires [Node.js](https://nodejs.org/) + npm + gulp (for development mode) to run.
+> rkFrontStarterKit requires [Node.js](https://nodejs.org/) + npm + gulp (for development mode.) to run.
 
 
 Install the package.json and start the server.
