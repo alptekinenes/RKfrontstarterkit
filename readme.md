@@ -13,6 +13,7 @@
   * ##### Sass (.scss)
     * ###### General Class Management
     * ###### Extra Class Management
+    * ###### Icon - Fonts Management
     * ###### Browser Hack
   * ##### Browser-sync (Live Reload)
   * ##### Bootstrap 4
