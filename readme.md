@@ -27,8 +27,9 @@ Install the package.json and start the server.
 
 ```sh
 $ cd rkFrontStarterKit
-$ npm install
-$ gulp
+$ npm install -g gulp
+$ npm install --save-dev
+$ gulp (# Just type this to run it again later.#)
 ```
 
 Verify the deployment by navigating to your server address in your preferred browser. (:3000 default port for browser-sync)
