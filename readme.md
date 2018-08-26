@@ -1,5 +1,5 @@
 
-#  rkFrontStarterKit
+#  RKfrontstarterkit
 
 &nbsp;
 ##### POWERED BY
@@ -35,16 +35,16 @@ _________________________________________
 Git clone.
 
 ```sh
-$ git clone https://github.com/RadKod/rkFrontStarterKit.git
+$ git clone https://github.com/RadKod/RKfrontstarterkit.git
 ```
 &nbsp;
-> rkFrontStarterKit requires [Node.js](https://nodejs.org/) + npm + gulp (for development mode.) to run.
+> RKfrontstarterkit requires [Node.js](https://nodejs.org/) + npm + gulp (for development mode.) to run.
 
 
 Install the package.json and start the server.
 
 ```sh
-$ cd rkFrontStarterKit
+$ cd RKfrontstarterkit
 $ npm install -g gulp
 $ npm install --save-dev
 $ gulp (# Just type this to run it again later.#)
