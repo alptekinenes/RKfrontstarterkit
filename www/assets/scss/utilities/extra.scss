@@ -210,3 +210,53 @@
 .justify-content-center {
     justify-content: center!important;
 }
+
+// object fit pollyfil css
+.of-fill {
+  object-fit: fill;
+  font-family: 'object-fit: fill';
+}
+
+.of-contain {
+  object-fit: contain;
+  font-family: 'object-fit: contain';
+}
+
+.of-cover {
+  object-fit: cover;
+  font-family: 'object-fit: cover';
+}
+.of-cover-op {
+  object-fit: cover;
+  object-position: center 80%;
+  font-family: 'object-fit: cover; object-position: center 80%';
+}
+
+.of-none {
+  object-fit: none;
+  font-family: 'object-fit: none';
+}
+
+.of-scaleDown {
+  object-fit: scale-down;
+  font-family: 'object-fit: scale-down';
+}
+.object-position {
+  max-height: 33vw;
+}
+@media (max-width: 700px) {
+  .xs--of-cover {
+    object-fit: cover;
+    font-family: 'object-fit: cover';
+  }
+  .caption-cover {
+    border-left: 5px solid green;
+    padding-left: 5px;
+  }
+}
+@media not all and (max-width: 700px) {
+  .caption-contain {
+    border-left: 5px solid green;
+    padding-left: 5px;
+}
+}

@@ -2,8 +2,8 @@ doctype html
 html(lang='tr-TR')
   head
     //if lt IE 9
-      script(src='assets/js/html5shiv.min.js')
-      script(src='assets/js/respond.min.js')
+      <script src='assets/js/html5shiv.min.js'></script>
+      <script src='assets/js/respond.min.js'></script>
     link(rel='shortcut icon', href='assets/img/core/favicon.ico')
     meta(charset='UTF-8')
     title RKfrontstarterkit
@@ -18,10 +18,10 @@ html(lang='tr-TR')
     meta(property='og:image', content='')
   body
     // header
-    include header.pug
-    .jumbotron.text-center.margin-no
-      h1 RKfrontstarterkit
+    include layouts/header.pug
+    // cover
+    include partials/cover.pug
     // footer
-    include footer.pug
-    // Import - Assets
-    include assets-importer.pug
+    include layouts/footer.pug
+    // import - assets
+    include utilities/assets-importer.pug
