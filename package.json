@@ -1,6 +1,6 @@
 {
 	"name": "RKfrontstarterkit",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A starter project for Front End Development | RKfrontstarterkit",
 	"main": "gulpfile.js",
 	"scripts": {
@@ -8,7 +8,7 @@
 	},
 	"devDependencies": {
 		"browser-sync": "*",
-		"gulp": "*",
+		"gulp": "^3.9.1",
 		"gulp-autoprefixer": "*",
 		"gulp-plumber": "*",
 		"gulp-util": "*",
