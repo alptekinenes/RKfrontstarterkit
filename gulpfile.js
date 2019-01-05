@@ -66,7 +66,7 @@ gulp.task('browser-sync', ['sass', 'pug'], function() {
 
 // Watch files comiling
 gulp.task('watch', function() {
-    gulp.watch('www/pug/*.pug', ['pug']);
+    gulp.watch('www/pug/**/*.pug', ['pug']);
     gulp.watch('www/*.html').on('change', reload);
     gulp.watch('www/assets/scss/**/*.scss', ['sass']);
     gulp.watch('www/assets/js/*.js').on('change', reload);
