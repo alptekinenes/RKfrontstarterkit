@@ -5,7 +5,7 @@
 ##### POWERED BY
 [![N|Solid](https://www.radkod.com/cdn/radkod_mail_imza.png)](https://www.radkod.com)
 
-#### Front End Development Starter Kit Used By RadKod Freelance Team.
+#### Front-End Development Starter Kit Used By RadKod Freelance Team.
   
   * ##### Gulp	
   * ##### Pug
