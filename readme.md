@@ -24,7 +24,7 @@
   * ##### Trunk8 (cut text)
   * ##### Fastclick
   * ##### Material Icons
-  * ##### Font Awesome
+  * ##### Font Awesome 4.7
   * ##### Ion Icons
   * ######  demo image assets
     &nbsp;
