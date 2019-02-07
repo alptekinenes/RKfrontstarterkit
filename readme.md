@@ -25,7 +25,7 @@
   * ##### Fastclick
   * ##### Material Icons
   * ##### Font Awesome 4.7
-  * ##### Ion Icons
+  * ##### Ion Icons v2
   * ######  demo image assets
     &nbsp;
 _________________________________________ 
