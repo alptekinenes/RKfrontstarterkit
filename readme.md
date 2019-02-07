@@ -3,7 +3,7 @@
 
 &nbsp;
 ##### POWERED BY
-[![N|Solid](https://www.radkod.com/cdn/radkod_mail_imza.png)](https://www.radkod.com)
+[![N|Solid](https://i.ibb.co/q5G6N0n/radkod-mail-imza.png)](https://www.radkod.com)
 
 #### Front-End Development Starter Kit Used By RadKod Freelance Team.
   
@@ -45,8 +45,8 @@ Install the package.json and start the server.
 
 ```sh
 $ cd RKfrontstarterkit
-$ npm install -g gulp
-$ npm install --save-dev
+$ npm install gulp-cli -g
+$ npm install -d
 $ gulp (# Just type this to run it again later.#)
 ```
 
