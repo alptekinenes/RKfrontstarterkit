@@ -30,10 +30,31 @@
 }
 
 .swiper-lazy-loaded {
-    background: none !important;
+    background: none;
+}
+
+.swiper-container.no-navigation{
+    .swiper-button-prev,
+    .swiper-button-next{
+        display: none;
+    }
+}
+
+.swiper-container.no-pagination{
+    .swiper-pagination{
+        display: none;
+    }
 }
 
 .lazy-hidden {
+    background-color: #eee;
+    background-image: url(../img/core/loader.svg);
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: center center;
+}
+
+.lazy {
     background-color: #eee;
     background-image: url(../img/core/loader.svg);
     background-repeat: no-repeat;
@@ -182,6 +203,14 @@
     width: 50vw;
 }
 
+.vw-100{
+    width: 100vw;
+}
+
+.wp-100{
+    width: 100%!important;
+}
+
 .bg-cover {
     background-size: cover!important;
 }
@@ -244,6 +273,7 @@
 .object-position {
   max-height: 33vw;
 }
+
 @media (max-width: 700px) {
   .xs--of-cover {
     object-fit: cover;
