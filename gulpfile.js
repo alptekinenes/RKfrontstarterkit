@@ -11,7 +11,7 @@ const reload = browserSync.reload;
 
 // Compile pug files to html
 gulp.task('pug', () => {
-    return gulp.src('www/pug/*.pug')
+    return gulp.src('dev/pug/**/*.pug')
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
@@ -30,7 +30,7 @@ gulp.task('pug', () => {
 
 // Compile sass files to css
 gulp.task('sass', function() {
-    return gulp.src('www/assets/scss/*.scss')
+    return gulp.src('dev/scss/*.scss')
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
@@ -52,7 +52,6 @@ gulp.task('sass', function() {
         .pipe(browserSync.reload({ stream: true }))
 });
 
-
 // the working directory
 gulp.task('browser-sync', ['sass', 'pug'], function() {
     browserSync.init({
@@ -62,15 +61,12 @@ gulp.task('browser-sync', ['sass', 'pug'], function() {
     });
 });
 
-
-
 // Watch files comiling
 gulp.task('watch', function() {
-    gulp.watch('www/pug/**/*.pug', ['pug']);
-    gulp.watch('www/*.html').on('change', reload);
-    gulp.watch('www/assets/scss/**/*.scss', ['sass']);
+    gulp.watch('dev/pug/**/*.pug', ['pug']);
+    gulp.watch('dev/scss/**/*.scss', ['sass']);
     gulp.watch('www/assets/js/*.js').on('change', reload);
+    gulp.watch('www/*.html').on('change', reload);
 });
-
 
 gulp.task('default', ['watch', 'browser-sync']);
