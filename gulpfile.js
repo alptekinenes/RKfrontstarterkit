@@ -1,5 +1,6 @@
 'use strict';
 const gulp = require('gulp');
+const wait = require('gulp-wait');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const gutil = require('gulp-util');
@@ -13,7 +14,7 @@ const reload = browserSync.reload;
 gulp.task('pug', () => {
     return gulp.src('dev/pug/**/*.pug')
         .pipe(plumber({
-            errorHandler: function(err) {
+            errorHandler: function (err) {
                 notify.onError({
                     title: "Gulp error in " + err.plugin,
                     message: err.message
@@ -29,10 +30,11 @@ gulp.task('pug', () => {
 });
 
 // Compile sass files to css
-gulp.task('sass', function() {
+gulp.task('sass', function () {
     return gulp.src('dev/scss/*.scss')
+        .pipe(wait(1000))
         .pipe(plumber({
-            errorHandler: function(err) {
+            errorHandler: function (err) {
                 notify.onError({
                     title: "Gulp error in " + err.plugin,
                     message: err.message
@@ -53,7 +55,7 @@ gulp.task('sass', function() {
 });
 
 // the working directory
-gulp.task('browser-sync', ['sass', 'pug'], function() {
+gulp.task('browser-sync', ['sass', 'pug'], function () {
     browserSync.init({
         server: {
             baseDir: "./www/"
@@ -62,7 +64,7 @@ gulp.task('browser-sync', ['sass', 'pug'], function() {
 });
 
 // Watch files comiling
-gulp.task('watch', function() {
+gulp.task('watch', function () {
     gulp.watch('dev/pug/**/*.pug', ['pug']);
     gulp.watch('dev/scss/**/*.scss', ['sass']);
     gulp.watch('www/assets/js/*.js').on('change', reload);
