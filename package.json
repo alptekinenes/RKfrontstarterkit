@@ -1,10 +1,12 @@
 {
 	"name": "RKfrontstarterkit",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "A starter project for Front-End Development | RKfrontstarterkit",
 	"main": "gulpfile.js",
 	"scripts": {
-		"start": "gulp"
+		"start": "gulp",
+		"clean": "gulp clean:www",
+		"build": "gulp clean:www && gulp build"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.4.0",
@@ -12,7 +14,8 @@
 		"babelify": "^10.0.0",
 		"browser-sync": "2.26.3",
 		"browserify": "^16.2.3",
-		"gulp": "3.9.1",
+		"del": "^4.0.0",
+		"gulp": "^3.9.1",
 		"gulp-autoprefixer": "6.0.0",
 		"gulp-babel": "^8.0.0-beta.2",
 		"gulp-cached": "1.1.1",
@@ -35,7 +38,7 @@
 		"watchify": "^3.11.1"
 	},
 	"engines": {
-		"node": "6.0.0"
+		"node": "8.0.0"
 	},
 	"repository": {
 		"type": "git",
@@ -45,7 +48,10 @@
 		"gulp",
 		"sass",
 		"pug",
-		"browsersync"
+		"browsersync",
+		"browserify",
+		"babel",
+		"es6"
 	],
 	"author": "Selim Doyranlı",
 	"contributors": [

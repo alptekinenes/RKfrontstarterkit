@@ -4,6 +4,7 @@ const wait = require('gulp-wait');
 const plumber = require('gulp-plumber');
 const notify = require('gulp-notify');
 const gutil = require('gulp-util');
+const del = require('del');
 const pugInheritance = require('gulp-pug-inheritance');
 const pug = require('gulp-pug');
 const changed = require('gulp-changed');
@@ -24,37 +25,14 @@ const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
-// Compile pug files to html
-gulp.task('pug', () => {
-    return gulp.src('dev/pug/**/*.pug')
-        .pipe(plumber({
-            errorHandler: function(err) {
-                notify.onError({
-                    title: "Gulp pug error in " + err.plugin,
-                    message: err.message
-                })(err);
-                gutil.beep();
-                this.emit('end');
-            }
-        }))
-        .pipe(changed('./www/', { extension: '.html' }))
-        .pipe(gulpif(global.isWatching, cached('pug')))
-        .pipe(pugInheritance({ basedir: 'dev/pug', skip: 'node_modules' }))
-        .pipe(filter(function(file) {
-            return !/\/_/.test(file.path) && !/^_/.test(file.relative);
-        }))
-        .pipe(pug({
-            pretty: true
-        }))
-        .pipe(gulp.dest('./www/'))
-        .pipe(reload({ stream: true }))
+// Clean www, do not remove public dir.
+gulp.task('clean:www', () => {
+    del(['www/**/*', '!www/public/', '!www/public/**'], {
+        dot: true
+    });
 });
 
-gulp.task('setWatchPugInheritance', function() {
-    global.isWatching = true;
-});
-
-// Compile sass files to css
+// Compile sass files to css (only scss base dir.)
 gulp.task('sass', () => {
     return gulp.src('dev/scss/*.scss')
         .pipe(wait(1000))
@@ -75,97 +53,140 @@ gulp.task('sass', () => {
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('www/assets/css/'))
-        .pipe(reload({ stream: true }))
+        .pipe(gulp.dest('www/css/'))
+        .pipe(reload({
+            stream: true
+        }))
 });
 
-gulp.task('cssVendor', () => {
-    return gulp.src('dev/css/vendor/**/*.css')
+// Css and Fonts, move to working dir.
+gulp.task('css', () => {
+    return gulp.src('dev/css/**/*.{css,ttf,eot,otf,svg,woff,woff2}')
         .pipe(wait(1000))
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
-                    title: "Gulp cssVendor error in " + err.plugin,
+                    title: "Gulp css/fonts error in " + err.plugin,
                     message: err.message
                 })(err);
                 gutil.beep();
                 this.emit('end');
             }
         }))
-        .pipe(gulp.dest('www/assets/css/vendor/'))
-        .pipe(reload({ stream: true }))
+        .pipe(gulp.dest('www/css/'))
+        .pipe(reload({
+            stream: true
+        }))
 });
 
-gulp.task('fontsVendor', () => {
-    return gulp.src('dev/css/vendor/**/fonts/*.{ttf,eot,otf,svg,woff,woff2}')
-        .pipe(gulp.dest('www/assets/css/vendor/'))
-        .pipe(reload({ stream: true }))
+// Only changed compile for pug files watch fix.
+gulp.task('setWatchPugInheritance', function() {
+    global.isWatching = true;
 });
 
-gulp.task('img', () => {
-    return gulp.src('dev/img/**/*.{png,gif,jpg,svg,jpeg,webp}')
-        .pipe(gulp.dest('www/assets/img/'))
-        .pipe(reload({ stream: true }))
-});
-
-gulp.task('json', () => {
-    return gulp.src('dev/json/**/*.json')
-        .pipe(gulp.dest('www/assets/json/'))
-        .pipe(reload({ stream: true }))
-});
-
-gulp.task('jsVendor', () => {
-    return gulp.src('dev/js/vendor/*.js')
+// Compile pug files to html
+gulp.task('pug', () => {
+    return gulp.src('dev/pug/**/*.pug')
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
-                    title: "Gulp jsVendor error in " + err.plugin,
+                    title: "Gulp pug error in " + err.plugin,
                     message: err.message
                 })(err);
                 gutil.beep();
                 this.emit('end');
             }
         }))
-        .pipe(gulp.dest('www/assets/js/vendor/'))
-        .pipe(reload({ stream: true }))
+        .pipe(changed('www', {
+            extension: '.html'
+        }))
+        .pipe(gulpif(global.isWatching, cached('pug')))
+        .pipe(pugInheritance({
+            basedir: 'dev/pug',
+            skip: 'node_modules'
+        }))
+        .pipe(filter(function(file) {
+            return !/\/_/.test(file.path) && !/^_/.test(file.relative);
+        }))
+        .pipe(pug({
+            pretty: true
+        }))
+        .pipe(gulp.dest('www'))
+        .pipe(reload({
+            stream: true
+        }))
 });
 
+// Json, move to working dir.
+gulp.task('json', () => {
+    return gulp.src('dev/json/**/*.json')
+        .pipe(gulp.dest('www/json/'))
+        .pipe(reload({
+            stream: true
+        }))
+});
+
+// Js, move to working dir.
+gulp.task('js', () => {
+    return gulp.src(['dev/js/**/*.js', '!dev/js/**/app.js'])
+        .pipe(plumber({
+            errorHandler: function(err) {
+                notify.onError({
+                    title: "Gulp js error in " + err.plugin,
+                    message: err.message
+                })(err);
+                gutil.beep();
+                this.emit('end');
+            }
+        }))
+        .pipe(gulp.dest('www/js/'))
+        .pipe(reload({
+            stream: true
+        }))
+});
+
+// ES6 task as function-task.
 gulp.task('es6', es6);
-function es6 (watch) {
+
+// ES6, Transpiling for js files.
+function es6(watch) {
     let b = browserify({
             entries: 'dev/js/app.js',
         })
         .transform(babelify.configure({
             presets: ['@babel/preset-env'],
         }));
-        if (watch) b = watchify(b);
+    if (watch) b = watchify(b);
 
-          let rebundle = function() {
-            gutil.log(gutil.colors.green('Bundling scripts...'));
-            return b.bundle()
-              .on('error', function(err) {
+    let rebundle = function() {
+        gutil.log(gutil.colors.bgMagenta('Bundling scripts...'));
+        return b.bundle()
+            .on('error', function(err) {
                 gutil.beep();
-                gutil.log(gutil.colors.red('Error (Browserify): ' + err.message));
-              })
-              .pipe(source('app.js'))
-              .pipe(buffer())
-              .pipe(sourcemaps.init({loadMaps: true}))
-              .pipe(sourcemaps.write('./'))
-              .pipe(gulp.dest('www/assets/js/'))
-              .pipe(reload({ stream: true }))
-            ;
-          };
+                gutil.log(gutil.colors.bgRed('Error (Browserify): ' + err.message + err.plugin));
+            })
+            .pipe(source('app.js'))
+            .pipe(buffer())
+            .pipe(sourcemaps.init({
+                loadMaps: true
+            }))
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest('www/js/'))
+            .pipe(reload({
+                stream: true
+            }));
+    };
 
-          b.on('update', function() {
-            return rebundle();
-          });
+    b.on('update', function() {
+        return rebundle();
+    });
 
-          return rebundle();
-                
+    return rebundle();
+
 };
 
-// the working directory
-gulp.task('browser-sync', ['sass', 'pug', 'setWatchPugInheritance', 'cssVendor', 'fontsVendor', 'img', 'json', 'jsVendor', 'es6'], function() {
+// The working directory.
+gulp.task('browser-sync', ['sass', 'css', 'setWatchPugInheritance', 'pug', 'json', 'js', 'es6'], function() {
     browserSync.init({
         server: {
             baseDir: "./www/"
@@ -173,14 +194,20 @@ gulp.task('browser-sync', ['sass', 'pug', 'setWatchPugInheritance', 'cssVendor',
     });
 });
 
-// Watch files comiling
+// Watch files comiling.
 gulp.task('watch', function() {
-    gulp.watch('dev/pug/**/*.pug', ['pug']);
-    gulp.watch('dev/scss/**/*.scss', ['sass']);
-    gulp.watch('dev/css/vendor/**/*.css', ['cssVendor']);
-    gulp.watch('dev/js/vendor/*.js', ['jsVendor']);
-    gulp.watch('dev/img/**/*.*', ['img']);
-    gulp.watch('dev/json/**/*.json', ['json']);
+    gulp.watch('dev/scss/**/*', ['sass']);
+    gulp.watch('dev/css/**/*', ['css']);
+    gulp.watch('dev/pug/**/*', ['pug']);
+    gulp.watch('dev/json/**/*', ['json']);
+    gulp.watch('dev/js/**/*', ['js']);
 });
 
+// Default task.
 gulp.task('default', ['watch', 'browser-sync']);
+
+// Clean & Build task.
+gulp.task('build', ['clean:www', 'sass', 'css', 'setWatchPugInheritance', 'pug', 'json', 'js', 'es6'], () => {
+    gutil.log(gutil.colors.bgGreen('OK! (BUILD COMPLETED.)'));
+    process.exit(0);
+});
