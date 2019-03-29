@@ -4,7 +4,7 @@
 	"description": "A starter project for Front-End Development | RKfrontstarterkit",
 	"main": "gulpfile.js",
 	"scripts": {
-		"setup": "npm install && gulp clean:www && gulp build",
+		"setup": "npm install && gulp clean:www && gulp build && gulp setupLog",
 		"start": "gulp",
 		"clean": "gulp clean:www",
 		"build": "gulp clean:www && gulp build"
