@@ -7,7 +7,7 @@
 
 #### Front-End Development Starter Kit Used By RadKod Freelance Team.
   
-  * ##### Gulp	
+  * ##### Gulp 3
   * ##### Pug
 
   * ##### Sass (.scss)
@@ -15,7 +15,10 @@
     * ###### Extra Class Management
     * ###### Icon - Fonts Management
     * ###### Browser Hack
-  * ##### Browser-sync (Live Reload)
+  * ##### Babel 8
+  * ##### Browserify
+  * ##### ES6
+  * ##### Browser Sync (Live Reload)
   * ##### Bootstrap 4
   * ##### Animate.css
   * ##### Lazy Load Image
@@ -23,7 +26,7 @@
   * ##### Swiper
   * ##### Trunk8 (cut text)
   * ##### Fastclick
-  * ##### Material Icons
+  * ##### Material Icons (zmdi)
   * ##### Font Awesome 4.7
   * ##### Ion Icons v2
   * ######  demo image assets
@@ -38,7 +41,7 @@ Git clone.
 $ git clone https://github.com/RadKod/RKfrontstarterkit.git
 ```
 &nbsp;
-> RKfrontstarterkit requires [Node.js](https://nodejs.org/) + npm + gulp (for development mode.) to run.
+> RKfrontstarterkit requires [Node.js](https://nodejs.org/) (recommend v8 or higher) + npm + gulp (for development mode.) to run.
 
 
 Install the package.json and start the server.
@@ -46,8 +49,8 @@ Install the package.json and start the server.
 ```sh
 $ cd RKfrontstarterkit
 $ npm install gulp-cli -g
-$ npm install -d
-$ gulp (# Just type this to run it again later.#)
+$ npm run setup
+$ npm run start (# Just type this to run it again later.#)
 ```
 
 Verify the deployment by navigating to your server address in your preferred browser. (:3000 default port for browser-sync)
@@ -57,5 +60,24 @@ Verify the deployment by navigating to your server address in your preferred bro
 or
 localhost:3000
 ```
+
+### START/DEV
+
+```sh
+$ npm run start
+```
+
+### CLEAN
+
+```sh
+$ npm run clean
+```
+
+### CLEAN & BUILD
+
+```sh
+$ npm run build
+```
+
 ###### LICENSE : MIT
 
