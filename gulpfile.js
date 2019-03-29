@@ -27,6 +27,7 @@ const reload = browserSync.reload;
 
 // Clean www, do not remove public dir.
 gulp.task('clean:www', () => {
+    gutil.log(gutil.colors.yellow.bold.underline('Cleaning www...'));
     del(['www/**/*', '!www/public/', '!www/public/**'], {
         dot: true
     });
@@ -39,7 +40,7 @@ gulp.task('sass', () => {
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
-                    title: "Gulp scss error in " + err.plugin,
+                    title: "SCSS error in " + err.plugin,
                     message: err.message
                 })(err);
                 gutil.beep();
@@ -66,7 +67,7 @@ gulp.task('css', () => {
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
-                    title: "Gulp css/fonts error in " + err.plugin,
+                    title: "CSS/FONTS error in " + err.plugin,
                     message: err.message
                 })(err);
                 gutil.beep();
@@ -90,7 +91,7 @@ gulp.task('pug', () => {
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
-                    title: "Gulp pug error in " + err.plugin,
+                    title: "PUG error in " + err.plugin,
                     message: err.message
                 })(err);
                 gutil.beep();
@@ -132,7 +133,7 @@ gulp.task('js', () => {
         .pipe(plumber({
             errorHandler: function(err) {
                 notify.onError({
-                    title: "Gulp js error in " + err.plugin,
+                    title: "JS error in " + err.plugin,
                     message: err.message
                 })(err);
                 gutil.beep();
@@ -159,11 +160,11 @@ function es6(watch) {
     if (watch) b = watchify(b);
 
     let rebundle = function() {
-        gutil.log(gutil.colors.bgMagenta('Bundling scripts...'));
+        gutil.log(gutil.colors.magenta.bold.underline('Transpiling [app.js] ...'));
         return b.bundle()
             .on('error', function(err) {
                 gutil.beep();
-                gutil.log(gutil.colors.bgRed('Error (Browserify): ' + err.message + err.plugin));
+                gutil.log(gutil.colors.bgRed('ERROR (Browserify): ' + err.message));
             })
             .pipe(source('app.js'))
             .pipe(buffer())
@@ -192,6 +193,7 @@ gulp.task('browser-sync', ['sass', 'css', 'setWatchPugInheritance', 'pug', 'json
             baseDir: "./www/"
         }
     });
+    gutil.log(gutil.colors.green.bold.underline('SERVE HAS BEEN STARTED.'));
 });
 
 // Watch files comiling.
@@ -208,6 +210,12 @@ gulp.task('default', ['watch', 'browser-sync']);
 
 // Clean & Build task.
 gulp.task('build', ['clean:www', 'sass', 'css', 'setWatchPugInheritance', 'pug', 'json', 'js', 'es6'], () => {
-    gutil.log(gutil.colors.bgGreen('OK! (BUILD COMPLETED.)'));
+    gutil.log(gutil.colors.cyan.bold.underline('OK! (BUILD IS DONE.)'));
+    process.exit(0);
+});
+
+// Project Setup Message.
+gulp.task('setupLog', () => {
+    gutil.log(gutil.colors.bgGreen('OK! (SETUP COMPLETED.), Type "npm run start" to start.'));
     process.exit(0);
 });
