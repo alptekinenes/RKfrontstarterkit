@@ -1,11 +1,11 @@
 {
 	"name": "RKfrontstarterkit",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "A starter project for Front-End Development | RKfrontstarterkit",
 	"main": "gulpfile.js",
 	"scripts": {
 		"setup": "npm install && gulp clean:www && gulp build && gulp setupLog",
-		"start": "gulp",
+		"dev": "gulp",
 		"clean": "gulp clean:www",
 		"build": "gulp clean:www && gulp build"
 	},

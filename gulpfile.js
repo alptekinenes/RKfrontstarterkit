@@ -275,7 +275,7 @@ gulp.task(
 gulp.task("setupLog", () => {
 	gutil.log(
 		gutil.colors.bgGreen(
-			'OK! (SETUP COMPLETED.), Type "npm run start" to start.'
+			'OK! (SETUP COMPLETED.), Type "npm run dev" to start development.'
 		)
 	);
 	process.exit(0);
