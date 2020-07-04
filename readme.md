@@ -50,7 +50,7 @@ Install the package.json and start the server.
 $ cd RKfrontstarterkit
 $ npm install gulp-cli -g
 $ npm run setup
-$ npm run start (# Just type this to run it again later.#)
+$ npm run dev (# Just type this to run it again later. #)
 ```
 
 Verify the deployment by navigating to your server address in your preferred browser. (:3000 default port for browser-sync)
